@@ -1,15 +1,11 @@
 <?php
-
+require 'db/connection.php';
 // php select option value from database
 
 $hostname = "localhost";
 $username = "root";
 $password = "";
 $databaseName = "insertion";
-
-// connect to mysql database
-
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
 $query = "SELECT * FROM `course`";
@@ -24,387 +20,319 @@ $result2 = mysqli_query($connect, $query);
 
 $options = "";
 
-while($row2 = mysqli_fetch_array($result2))
-{
-    $options = $options."<option>$row2[1]</option>";
+while ($row2 = mysqli_fetch_array($result2)) {
+    $options = $options . "<option>$row2[1]</option>";
 }
-
 ?>
 <?php
-  $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "header.php";
-   include_once("header.php");
-   include_once("navbar.php");
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "header.php";
+include_once("header.php");
+include_once("navbar.php");
 ?>
 <html>
-<head>
-<style>
-body {
-	background-color: white;
-}
-</body>
-</style>
-</head>
-<body>
-<br><div class="container" >
-	
-  <div class="row" align="center">
-    <div class="col-lg-6">
-		<div class="jumbotron">
-		Here you will set your schedules
-		<form class="form-horizontal" method= "post" action = "add.home.php">
-			<fieldset>
-
-			<!-- Form Name -->
-			<legend>Set Schedule</legend>
-
-
-        <meta charset="UTF-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <head>
+        <style>
+            body {
+                background-color: white;
+            }
+        </style>
     </head>
-
     <body>
-        
-		<!-- Method Two -->
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="faculty">Faculty</label> 
-			<div class="col-md-5">
-		<select id="faculty" name="faculty" class="form-control">
-            <?php echo $options;?>
-        </select>
-		</div>
-		</div>
-		
-        <!--Method One-->
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="Course">Course</label> 
-			<div class="col-md-5">
-		<select  id="course" name="course"  class="form-control">
+        <br><div class="container" >
 
-            <?php while($row1 = mysqli_fetch_array($result1)):;?>
+            <div class="row" align="center">
+                <div class="col-lg-6">
+                    <div class="jumbotron">
+                        Here you will set your schedules
+                        <form class="form-horizontal" method= "post" action = "add.home.php">
+                            <fieldset>
 
-            <option  value="<?php echo $row1[2];?>"><?php echo $row1[2];?></option>
+                                <!-- Form Name -->
+                                <legend>Set Schedule</legend>
 
-            <?php endwhile;?>
 
-        </select>
-        
-        
+                                <meta charset="UTF-8">
 
-		</div>		
-    </div>
-    </body>
-</head>
-</html>
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<?php
+                                </head>
 
+                                <body>
+
+                                    <!-- Method Two -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="faculty">Faculty</label> 
+                                        <div class="col-md-5">
+                                            <select id="faculty" name="faculty" class="form-control">
+                                                <?php echo $options; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--Method One-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="Course">Course</label> 
+                                        <div class="col-md-5">
+                                            <select  id="course" name="course"  class="form-control">
+
+                                                <?php while ($row1 = mysqli_fetch_array($result1)):; ?>
+
+                                                    <option  value="<?php echo $row1[2]; ?>"><?php echo $row1[2]; ?></option>
+
+                                                <?php endwhile; ?>
+
+                                            </select>
+
+
+
+                                        </div>		
+                                    </div>
+                                </body>
+                                </head>
+                                </html>
+
+                                <?php
 // php select option value from database
 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-// connect to mysql database
-
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+                                $hostname = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $databaseName = "insertion";
 
 // mysql select query
-$query = "SELECT * FROM `rooms`";
+                                $query = "SELECT * FROM `rooms`";
 
 // for method 1
 
-$result1 = mysqli_query($connect, $query);
+                                $result1 = mysqli_query($connect, $query);
 
 // for method 2
-$query = "SELECT * FROM `subject`";
-$result2 = mysqli_query($connect, $query);
+                                $query = "SELECT * FROM `subject`";
+                                $result2 = mysqli_query($connect, $query);
 
 
-$options = "";
+                                $options = "";
 
-while($row2 = mysqli_fetch_array($result2))
-{
-    $options = $options."<option>$row2[2]</option>";
-}
-
-?>
+                                while ($row2 = mysqli_fetch_array($result2)) {
+                                    $options = $options . "<option>$row2[2]</option>";
+                                }
+                                ?>
 
 
-<html>
-<head>
-</head>
-<body>
+                                <html>
+                                    <head>
+                                    </head>
+                                    <body>
+                                        <meta charset="UTF-8">
+
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                                        </head>
+
+                                    <body>
+
+                                        <!-- Method Two -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="subject">Subject</label> 
+                                            <div class="col-md-5">
+                                                <select  id="subject" name="subject"  class="form-control">
+                                                    <?php echo $options; ?>
+                                                </select>
+                                            </div>
+                                        </div>
 
 
-        <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <?php while ($row2 = mysqli_fetch_array($result2)):; ?>
 
-    </head>
+                                        <option value="<?php echo $row2[0]; ?>"><?php echo $row2[2]; ?></option>
 
-    <body>
-        
-		<!-- Method Two -->
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="subject">Subject</label> 
-			<div class="col-md-5">
-		<select  id="subject" name="subject"  class="form-control">
-            <?php echo $options;?>
-        </select>
-		</div>
-		</div>
-		
-        
+                                    <?php endwhile; ?>
 
-            <?php while($row2 = mysqli_fetch_array($result2)):;?>
-
-            <option value="<?php echo $row2[0];?>"><?php echo $row2[2];?></option>
-
-            <?php endwhile;?>
-
-        </select> 
-		<?php
-
-// php select option value from database
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-// connect to mysql database
-
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
+                                    </select> 
+                                    <?php
 // mysql select query
-$query = "SELECT * FROM `rooms`";
+                                    $query = "SELECT * FROM `rooms`";
 
 // for method 1
 
-$result1 = mysqli_query($connect, $query);
+                                    $result1 = mysqli_query($connect, $query);
 
 // for method 2
-$query = "SELECT * FROM `rooms`";
-$result2 = mysqli_query($connect, $query);
+                                    $query = "SELECT * FROM `rooms`";
+                                    $result2 = mysqli_query($connect, $query);
 
 
-$options = "";
+                                    $options = "";
 
-while($row2 = mysqli_fetch_array($result2))
-{
-    $options = $options."<option>$row2[1]</option>";
-}
-
- 
-?>
+                                    while ($row2 = mysqli_fetch_array($result2)) {
+                                        $options = $options . "<option>$row2[1]</option>";
+                                    }
+                                    ?>
 
 
 
-<html>
-<head>
-</head>
-<body>
-<meta charset="UTF-8">
+                                    <html>
+                                        <head>
+                                        </head>
+                                        <body>
+                                            <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </head>
+                                            </head>
 
-    <body>
-        
-		<!-- Method Two -->
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="room">Room</label> 
-			<div class="col-md-5">
-		<select  id="room" name="room"  class="form-control">
-            <?php echo $options;?>
-        </select>
-		</div>
-		</div>
-		
-        <!--Method One-->
-        
-       
+                                        <body>
 
-            <?php while($row2 = mysqli_fetch_array($result2)):;?>
+                                            <!-- Method Two -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="room">Room</label> 
+                                                <div class="col-md-5">
+                                                    <select  id="room" name="room"  class="form-control">
+                                                        <?php echo $options; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-            <option value="<?php echo $row2[0];?>"><?php echo $row2[1];?></option>
-			
-
-            <?php endwhile;?>
-
-        </select>
-        
-	
-        
+                                            <!--Method One-->
 
 
 
-<?php
+                                            <?php while ($row2 = mysqli_fetch_array($result2)):; ?>
 
-// php select option value from database
+                                            <option value="<?php echo $row2[0]; ?>"><?php echo $row2[1]; ?></option>
 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
 
-// connect to mysql database
+                                        <?php endwhile; ?>
 
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
+                                        </select>     
+                                        <?php
 // mysql select query
-$query = "SELECT * FROM `timer`";
+                                        $query = "SELECT * FROM `timer`";
 
 // for method 1
 
-$result1 = mysqli_query($connect, $query);
+                                        $result1 = mysqli_query($connect, $query);
 
 // for method 2
-$query = "SELECT * FROM `timer`";
-$result2 = mysqli_query($connect, $query);
+                                        $query = "SELECT * FROM `timer`";
+                                        $result2 = mysqli_query($connect, $query);
 
 
-$options = "";
+                                        $options = "";
 
-while($row2 = mysqli_fetch_array($result2))
-{
-    $options = $options."<option>$row2[1]</option>";
-}
-
- 
-?>
+                                        while ($row2 = mysqli_fetch_array($result2)) {
+                                            $options = $options . "<option>$row2[1]</option>";
+                                        }
+                                        ?>
 
 
 
-<html>
-<head>
-</head>
-<body>
-<meta charset="UTF-8">
+                                        <html>
+                                            <head>
+                                            </head>
+                                            <body>
+                                                <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </head>
+                                                </head>
 
-    <body>
-        
-		
-		
-        <!--Method One-->
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="start_time">Start time</label> 
-			<div class="col-md-5">
-		<select  id="start_time" name="start_time" class="form-control">
-		  <?php echo $options;?>
-       
+                                            <body>
 
-            <?php while($row2 = mysqli_fetch_array($result2)):;?>
 
-            <option value="<?php echo $row2[0];?>"><?php echo $row2[1];?></option>
-			
 
-            <?php endwhile;?>
+                                                <!--Method One-->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="start_time">Start time</label> 
+                                                    <div class="col-md-5">
+                                                        <select  id="start_time" name="start_time" class="form-control">
+                                                            <?php echo $options; ?>
 
-        </select>
-        
-		</div>		
-    </div>
-    </body>
-</head>
 
-</html>
-        
+                                                            <?php while ($row2 = mysqli_fetch_array($result2)):; ?>
 
-<?php
+                                                                <option value="<?php echo $row2[0]; ?>"><?php echo $row2[1]; ?></option>
 
-// php select option value from database
 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
+                                                            <?php endwhile; ?>
 
-// connect to mysql database
+                                                        </select>
 
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+                                                    </div>		
+                                                </div>
+                                            </body>
+                                            </head>
 
+                                        </html>
+
+
+                                        <?php
 // mysql select query
-$query = "SELECT * FROM `timer`";
+                                        $query = "SELECT * FROM `timer`";
 
 // for method 1
 
-$result1 = mysqli_query($connect, $query);
+                                        $result1 = mysqli_query($connect, $query);
 
 // for method 2
-$query = "SELECT * FROM `timer`";
-$result2 = mysqli_query($connect, $query);
+                                        $query = "SELECT * FROM `timer`";
+                                        $result2 = mysqli_query($connect, $query);
 
 
-$options = "";
+                                        $options = "";
 
-while($row2 = mysqli_fetch_array($result2))
-{
-    $options = $options."<option>$row2[2]</option>";
-}
+                                        while ($row2 = mysqli_fetch_array($result2)) {
+                                            $options = $options . "<option>$row2[2]</option>";
+                                        }
+                                        ?>                                        <meta charset="UTF-8">
 
-?>
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                                        </head>
+
+                                        <body>
+
+                                            <!-- Method Two -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="end_time">End time</label> 
+                                                <div class="col-md-5">
+                                                    <select  id="end_time" name="end_time" class="form-control">
+                                                        <?php echo $options; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
 
 
 
+                                            <?php while ($row2 = mysqli_fetch_array($result2)):; ?>
+
+                                            <option value="<?php echo $row2[0]; ?>"><?php echo $row2[1]; ?></option>
+
+                                        <?php endwhile; ?>
+
+                                        </select>
+                                        <!-- Button -->
+                                        <div class="form-group"  align="right">
+                                            <label class="col-md-4 control-label" for="submit"></label>
+                                            <div class="col-md-5">
+                                                <button id="submit" name="insert" class="btn btn-primary"> Set </button>
+                                            </div>
+                                        </div>
 
 
-        <meta charset="UTF-8">
+                            </fieldset>
+                        </form>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    </div>		
+                </div>
+                </body>
 
-    </head>
 
-    <body>
-        
-		<!-- Method Two -->
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="end_time">End time</label> 
-			<div class="col-md-5">
-		<select  id="end_time" name="end_time" class="form-control">
-            <?php echo $options;?>
-        </select>
-		</div>
-		</div>
-		
-       
+                </head>
 
-            <?php while($row2 = mysqli_fetch_array($result2)):;?>
-
-            <option value="<?php echo $row2[0];?>"><?php echo $row2[1];?></option>
-
-            <?php endwhile;?>
-
-        </select>
-		<!-- Button -->
-				<div class="form-group"  align="right">
-				  <label class="col-md-4 control-label" for="submit"></label>
-				  <div class="col-md-5">
-					<button id="submit" name="insert" class="btn btn-primary"> Set </button>
-				  </div>
-				</div>
-        
-        
-</fieldset>
-			</form>
-			
-		</div>		
-    </div>
-    </body>
-	
-	
-</head>
-
-</html>
+                </html>
 
 
 

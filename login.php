@@ -1,13 +1,12 @@
 <?php
 session_start();
+require 'db/connection.php';
 
   $username = $_POST['username'];
   $password = $_POST['password'];
  
   if ($username&&$password)
-  {
-	
-	 
+  {	 
 	 $query = mysqli_query($connect,"SELECT * FROM admin WHERE username='$username'");
 	 
 	 $numrows = mysqli_num_rows($query);

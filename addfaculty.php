@@ -10,6 +10,7 @@
 body {
 	background-color: white;
 }
+</style>
 </body>
 </style>
 </head>
